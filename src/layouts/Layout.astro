@@ -1,0 +1,28 @@
+---
+import Header from "../components/Header.astro";
+import Matomo from "../components/Matomo.astro";
+import SEO from "../components/SEO.astro";
+
+export interface Props {
+  seo?: Object;
+}
+
+const { seo } = Astro.props;
+
+---
+
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO seo={seo} />
+  </head>
+  <body class="lg:grid lg:grid-cols-[minmax(300px,550px)_minmax(600px,1fr)] lg:min-h-screen bg-black">
+    <Header/>
+    <slot />
+    <Matomo/>
+  </body>
+</html>

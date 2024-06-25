@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+---
+
+<header
+    class="header sticky lg:max-h-screen z-30 top-0 shadow lg:p-6 bg-black lg:flex lg:w-86 lg:items-start lg:overflow-y-auto xl:w-120"
+>
+    <div
+        class="max-w-4xl 4xl:max-w-7xl mx-auto p-3 flex lg:flex-col space-x-3 lg:space-x-0 items-center lg:space-y-6 relative z-10 lg:min-h-full lg:flex-auto lg:px-8 xl:px-12"
+    >
+        <a
+            class="flex-grow-0 h-16 w-16 md:h-20 md:w-20 lg:h-64 lg:w-64"
+            aria-label="Homepage"
+            href="/"
+        >
+            <Image
+                src={"/matteo.jpg"}
+                class="h-16 md:h-20 lg:h-64 object-contain object-center image transition-all rounded-full border-2 border-rose-600"
+                width={300}
+                height={330}
+                alt="Matteo Mancino Profile Image"
+            />
+        </a>
+        <div class="lg:mt-12 text-left details space-y-0.5">
+            <h1
+                class="text-lg md:text-xl lg:text-4xl leading-none lg:text-center text-gray-900"
+            >
+                <span class="text-white mr-1">Matteo Mancino</span><span class="font-bold text-rose-600">DeeJay</span>
+            </h1>
+            <p
+                class="text-xs sm:text-sm lg:text-lg lg:text-center leading-none text-white opacity-60"
+            >
+                Deep House, Afro House, Tech House
+            </p>
+        </div>
+        <section class="hidden lg:block">
+            <p class="mt-2 text-base leading-7 text-white">Righe per autobiografia</p>
+        </section>
+    </div>
+</header>
