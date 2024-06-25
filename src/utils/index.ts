@@ -1,5 +1,9 @@
+import { format } from "date-fns";
+import { it } from "date-fns/locale";
 import Parser from "rss-parser";
+import slugify from "slugify";
 import { Track } from "../models";
+export { formatDuration } from "./time";
 
 const mainTitle = "DeeJay - Matteo Mancino";
 
@@ -33,3 +37,21 @@ export function trackPagination(tracks: Track[]) {
 
 export const buildTitle = (...pageTitles: string[]) =>
   [...pageTitles, mainTitle].filter((item) => item !== "").join(" | ");
+
+export const formatDate = (pubDate: string): string =>
+  format(new Date(pubDate), "EEEE, do MMMM yyyy 'ore' k:mm", {
+    locale: it,
+});
+
+export const prepareTitle = (title: string) => {
+  const [epNum, ...rest] = title.split(" - ");
+  return [epNum.substring(3), rest.join("")];
+};
+
+export const getSlug = (track: Track) =>
+  `${slugify(track.title, {
+  remove: /[*+~.()'"!\?,:@]/g,
+  lower: true, // convert to lower case, defaults to `false`
+  strict: false,
+})}`;
+

@@ -1,0 +1,52 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import {
+  getTrackFeed,
+  buildTitle,
+  trackPagination,
+} from "../../utils";
+import Menu from "../../components/Menu.astro";
+import TrackCard from "../../components/TrackCard.astro";
+import Pagination from "../../components/Pagination.astro";
+
+export async function getStaticPaths() {
+  const { tracks } = await getTrackFeed(
+    "https://www.spreaker.com/show/4173756/episodes/feed"
+  );
+
+  const pagination = trackPagination(tracks);
+
+  return pagination.pages.map((page, index) => ({
+    params: {page: page.param},
+    props: {
+        tracks: tracks.slice(20 * index, 20 * (index +1)),
+        pagination,
+        currentPage: index + 1
+    }
+  }));
+}
+
+const { tracks, currentPage, pagination } = Astro.props;
+const { page } = Astro.params;
+---
+
+<Layout
+  seo={{
+    canonical: page === 'page-1' ? '/' : `/tracks/${page}`,
+    title: buildTitle('Tutte le tragge - Pagina ' + currentPage),
+    description: 'Deep House, Afro House, Tech House',
+    image: '/matteo.jpg',
+  }}
+>
+  <main class="relative lg:min-h-screen flex flex-col">
+    <Menu />
+    <ul
+      role="list"
+      class="max-w-4xl 4xl:max-w-7xl mx-auto w-full p-2 sm:p-4 md:p-8 lg:p-8 grid 4xl:grid-cols-2 gap-2"
+    >
+      {tracks.map((e) => <TrackCard {...e} />)}
+    </ul>
+
+    <Pagination currentPage={currentPage} pages={pagination.pages} />
+  </main>
+</Layout>
