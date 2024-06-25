@@ -14,7 +14,7 @@ const { title, siteName, siteDescription } = Astro.props;
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
@@ -22,6 +22,7 @@ const { title, siteName, siteDescription } = Astro.props;
         <meta property="og:site_name" content={siteName} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={siteDescription} />
+        <meta property="theme-color" content="red" />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <AstroFont
             config={[
