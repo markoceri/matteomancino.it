@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+
+const src = '/matteo.jpg';
+---
+
+<div class="flex justify-center items-center rounded-full border-4 border-rose-800">
+	<Image
+		src={src}
+		alt="Matteo Mancino DJ"
+		width={156}
+		height={156}
+		class="animate-zoom-in-out rounded-full size-36 md:size-40 p-0.5 duration-300"
+		loading="eager"
+	/>
+</div>
