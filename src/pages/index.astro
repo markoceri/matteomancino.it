@@ -5,15 +5,11 @@ import Socials from '../components/Socials.astro';
 import Landing from '../layouts/Landing.astro';
 import Footer from '../components/Footer.astro';
 
-/**
- * Replace the values below with your own information
- */
 const title = "Matteo Mancino DJ";
-const siteName = 'Matteo Mancino DJ';
-const siteDescription = 'Showcasing the professional work and projects.';
+const description = "Deep House, Afro House, Tech House"
 ---
 
-<Landing title={title} siteName={siteName} siteDescription={siteDescription}>
+<Landing seo={{ title, description, image: "/matteo.jpg" }}>
 	<Avatar />
 	<Details />
 	<Socials />
