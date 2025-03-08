@@ -17,6 +17,9 @@ enum Type {
 	email = 'Email',
 	titok = 'TikTok',
 	soundcloud = 'SoundCloud',
+	youtube = "YouTube",
+	spotify = "Spotify",
+	beatport = "Beatport"
 }
 
 const socials = [
@@ -39,27 +42,45 @@ const socials = [
 		color: 'bg-orange-400',
 	},
 	{
+		name: Type.youtube,
+		url: 'https://www.youtube.com/@matteomancinodeejay',
+		icon: 'assets/svg/icons/youtube.svg',
+		color: 'bg-red-400',
+	},
+	{
+		name: Type.spotify,
+		url: 'https://open.spotify.com/user/matteo701',
+		icon: 'assets/svg/icons/spotify.svg',
+		color: 'bg-green-400',
+	},
+	{
+		name: Type.beatport,
+		url: 'https://www.beatport.com/account/profile',
+		icon: 'assets/svg/icons/beatport.svg',
+		color: 'bg-lime-400',
+	},
+	{
 		name: Type.email,
 		url: 'dj@matteomancino.it',
 		icon: 'assets/svg/icons/email.svg',
-		color: 'bg-lime-400',
+		color: 'bg-gray-400',
 	},
 ];
 
 const getColor = (type: Type) => socials.find((social) => social.name === type)?.color;
 const getClass = (type: Type) =>
-	`scale-100 rounded-full border-2 border-gray-950 ${getColor(
+	`scale-100 rounded-full ${getColor(
 		type,
 	)} transition duration-300 hover:scale-110 animate-zoom-in`;
 ---
 
-<div class="grid grid-cols-3 gap-3 md:grid-flow-col md:gap-2 duration-500">
+<div class="grid grid-cols-7 gap-1 md:grid-flow-col md:gap-3 duration-500">
 	{
 		socials.map((social) => {
 			const href = social.name === Type.email ? `mailto:${social.url}` : social.url;
 			return (
 				<a aria-label={social.name} class={getClass(social.name)} href={href} target="_blank" rel="nofollow noopner">
-					<img class="size-14 p-3 md:size-16" src={social.icon} alt={social.name} />
+					<img class="size-12 p-3 md:size-14" src={social.icon} alt={social.name} />
 				</a>
 			);
 		})
