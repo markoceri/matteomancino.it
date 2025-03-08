@@ -90,7 +90,7 @@ const getClass = (type: Type) =>
 			const href = social.name === Type.email ? `mailto:${social.url}` : social.url;
 			return (
 				<a aria-label={social.name} class={getClass(social.name)} href={href} target="_blank" rel="nofollow noopner">
-					<img class="size-12 p-3 md:size-14" src={social.icon} alt={social.name} />
+					<img class="size-10 p-3 md:size-14" src={social.icon} alt={social.name} />
 				</a>
 			);
 		})
